@@ -3,59 +3,8 @@
         
         $less = new lessc();
         
-        $css = $less->compile("
-        
-        // Maak een nieuwe pagina die 2 verschillende tabellen laat zien met ieder 5 records. De opmaak van de tabellen moet
-        // worden geregeld door dezelfde geparametriseerde LESS mixin met guard. 
-        
-        
-        .tblDefault(@margin, @border, @color, @fontFamily, @weight, @padding, @borderCollapse: collapse)
-        { 
-                margin: @margin;
-                border-collapse: @borderCollapse;
-                
-                tr{
-                    &:nth-child(2n){
-                    background-color: lighten(@color, 20%);
-                    }
-                    &:nth-child(2n + 1){
-                    background-color: lighten(@color, 30%);
-                    }
-                }
-                
-                td{
-                    border:@border @color;
-                    margin: @margin;
-                    padding: @padding;
-                    font-family:@fontFamily;
-                    font-weight: @weight;
-                    
-                }
-                
-                th{
-                    border:@border @color;
-                    margin: @margin;
-                    padding: @padding;
-                    background-color: darken(@color,50%);
-                    color:lighten(@color,10%);
-                    
-                }
-                
-                     
-        }
-        
-        
-        
-        #tbl1
-        {
-            .tblDefault(2em, 2px solid, rgb(245, 137, 54), ~'Arial, Helvetica, sans-serif', 900, 1em, collapse);
-        }
-        
-        #tbl2
-        {
-            .tblDefault(1em, 2px solid, rgb(54, 119, 232), ~'Arial, Helvetica, sans-serif', 1000, 1em, collapse);
-        }
-");?>
+        $css = $less->compileFile("lessPhp_compileFile.less");
+        ?>
 
 
 <!DOCTYPE html>
