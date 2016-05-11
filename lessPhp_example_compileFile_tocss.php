@@ -3,8 +3,7 @@
         
         $less = new lessc();
         
-        $less_css = "less_comepileFile.css";
-        $less->compileFile("lessPhp_compileFile.less", $less_css);
+        $css = $less->compileFile("lessPhp_compileFile.less");
         ?>
 
 
@@ -14,8 +13,10 @@
        <title>Table LESS</title>  
        <!--<link rel="stylesheet/less"  type="text/css" href="./tablestyle.less"> 
        <script src="./less.js/dist/less.js"></script> -->
-       <link rel="stylesheet" type="text/css" href="<?php echo $less_css;?>">
     </head>
+    <style>
+        <?php echo $css;?>
+    </style>
     <body>
         <table id="tbl1">
             <tr>
