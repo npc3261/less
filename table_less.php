@@ -2,7 +2,7 @@
 <html>
     <head>
        <title>Table LESS</title>  
-       <link rel="stylesheet/less"  type="text/css" href="./style.less"> 
+       <link rel="stylesheet/less"  type="text/css" href="./tablestyle.less"> 
        <script src="./less.js/dist/less.js"></script>    
     </head>
     <body>
