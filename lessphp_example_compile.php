@@ -1,80 +1,79 @@
-<?php
-        include_once('./lessphp/lessc.inc.php');
-        
-        $less = new lessc();
-        
-        $css = $less->compile("
-        
-        // Maak een nieuwe pagina die 2 verschillende tabellen laat zien met ieder 5 records. De opmaak van de tabellen moet
-        // worden geregeld door dezelfde geparametriseerde LESS mixin met guard. 
-        
-        
-        .tblDefault(@margin, @border, @color, @fontFamily, @weight, @padding, @borderCollapse: collapse)
-        { 
-                margin: @margin;
-                border-collapse: @borderCollapse;
+<?php 
+    include_once("./lessphp/lessc.inc.php");
+    
+    $less = new lessc();
+    
+    $css = $less->compile("
+    
+    // Maak een nieuwe pagina die 2 verschillende tabellen laat zien met ieder 5 records. De opmaak van de tabellen moet
+    // worden geregeld door dezelfde geparametriseerde LESS mixin met guard. 
+    .tblDefault(@margin, @border, @color, @padding, @borderCollapse: collapse)
+    { 
+            border-collapse: @borderCollapse;
+            margin: 2em auto;
+            font-family: Verdana;
+            
+            tr
+            {
+                &:nth-child(2n)
+                {
+                    background-color: lighten(@color, 40%);
+                }
                 
-                tr{
-                    &:nth-child(2n){
-                    background-color: lighten(@color, 20%);
-                    }
-                    &:nth-child(2n + 1){
+                &:nth-child(2n+1)
+                {
                     background-color: lighten(@color, 30%);
-                    }
                 }
+            }
+            
+            td
+            {
                 
-                td{
-                    border:@border @color;
-                    margin: @margin;
-                    padding: @padding;
-                    font-family:@fontFamily;
-                    font-weight: @weight;
-                    
-                }
-                
-                th{
-                    border:@border @color;
-                    margin: @margin;
-                    padding: @padding;
-                    background-color: darken(@color,50%);
-                    color:lighten(@color,10%);
-                    
-                }
-                
-                     
-        }
-        
-        
-        
-        #tbl1
-        {
-            .tblDefault(2em, 2px solid, rgb(245, 137, 54), ~'Arial, Helvetica, sans-serif', 900, 1em, collapse);
-        }
-        
-        #tbl2
-        {
-            .tblDefault(1em, 2px solid, rgb(54, 119, 232), ~'Arial, Helvetica, sans-serif', 1000, 1em, collapse);
-        }
+                border: @border @color; 
+                margin: @margin;
+                padding: @padding;
+                color: lighten(@color, 50%);
+                font-weight:900;
+            }
+            
+            th
+            {
+                border: @border @color; 
+                margin: @margin;
+                padding: @padding;
+                background-color: darken(@color, 10%);
+                color: lighten(@color, 60%);
+            }            
+    }
 
-        
-        
-");?>
+    #tbl1
+    {
+        .tblDefault(2em, 1px solid, rgb(255, 7, 20), 1em, collapse) ;
+    }
 
+    #tbl2
+    {
+        .tblDefault(1em, 1px solid,  blue, 1em, collapse) ;
+    }
+");
+?>
 
 <!DOCTYPE html>
 <html>
     <head>
        <title>Table LESS</title>  
-       <!--<link rel="stylesheet/less"  type="text/css" href="./tablestyle.less"> 
-       <script src="./less.js/dist/less.js"></script> -->
+       <!--
+       <link rel="stylesheet/less"  type="text/css" href="./style.less"> 
+       <script src="./less.js/dist/less.js"></script> 
+       -->
+       <style>
+           <?php echo $css; ?>           
+       </style>          
     </head>
-    <style>
-        <?php echo $css;?>
-    </style>
     <body>
         <table id="tbl1">
             <tr>
-                <th>id</th>
+               <th>id</th>
                 <th>voornaam</th>
                 <th>tussenvoegsel</th>
                 <th>achternaam</th>
@@ -161,5 +160,7 @@
                 <td>admin</td>                
             </tr>            
         </table>
+        
+        
     </body>
 </html>

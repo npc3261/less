@@ -1,26 +1,27 @@
-<?php
-        include_once('./lessphp/lessc.inc.php');
-        
-        $less = new lessc();
-        
-        $css = $less->compileFile("lessPhp_compileFile.less");
-        ?>
-
+<?php 
+    include_once("./lessphp/lessc.inc.php");
+    
+    $less = new lessc();
+    
+    $css = $less->compileFile("less_compilefile.less");
+?>
 
 <!DOCTYPE html>
 <html>
     <head>
        <title>Table LESS</title>  
-       <!--<link rel="stylesheet/less"  type="text/css" href="./tablestyle.less"> 
-       <script src="./less.js/dist/less.js"></script> -->
+       <!--
+       <link rel="stylesheet/less"  type="text/css" href="./style.less"> 
+       <script src="./less.js/dist/less.js"></script> 
+       -->
+       <style>
+            <?php echo $css; ?>       
+       </style>  
     </head>
-    <style>
-        <?php echo $css;?>
-    </style>
     <body>
         <table id="tbl1">
             <tr>
-                <th>id</th>
+               <th>id</th>
                 <th>voornaam</th>
                 <th>tussenvoegsel</th>
                 <th>achternaam</th>
