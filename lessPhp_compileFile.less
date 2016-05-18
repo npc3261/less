@@ -9,11 +9,18 @@
         
         tr{
             &:nth-child(2n){
-            background-color: lighten(@color, 20%);
+            background-color: lighten(@color, 10%);
+            }
+            &:nth-child(2n):hover{
+            background-color: lighten(@color, 15%);
             }
             &:nth-child(2n + 1){
+            background-color: lighten(@color, 25%);
+            }
+            &:nth-child(2n + 1):hover{
             background-color: lighten(@color, 30%);
             }
+            
         }
         
         td{
@@ -29,9 +36,12 @@
             border:@border @color;
             margin: @margin;
             padding: @padding;
-            background-color: darken(@color,50%);
+            background-color: darken(@color, 15%);
             color:lighten(@color,10%);
-            
+            &:hover{
+                background-color: darken(@color, 5%);
+                color: lighten(@color, 5%);
+            }
         }
         
              
